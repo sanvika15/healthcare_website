@@ -40,12 +40,12 @@ const PatientForm = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <h2>Patient Visit Form</h2>
+    <form onSubmit={handleSubmit} className='mx-3 my-3' >
+      <h2 className='mx-1 my-1'>Patient Visit Form</h2>
       <table>
         <tbody>
           <tr>
-            <td>Last Menstrual Period Date:</td>
+            <td className='px-1 py-1'>Last Menstrual Period Date:</td>
             <td>
               <input
                 type="date"
@@ -56,7 +56,7 @@ const PatientForm = () => {
             </td>
           </tr>
           <tr>
-            <td>Weight (kg):</td>
+            <td className='px-1 py-1'>Weight (kg):</td>
             <td>
               <input
                 type="number"
@@ -67,7 +67,7 @@ const PatientForm = () => {
             </td>
           </tr>
           <tr>
-            <td>Height (cm):</td>
+            <td className='px-1 py-1'>Height (cm):</td>
             <td>
               <input
                 type="number"
@@ -78,7 +78,7 @@ const PatientForm = () => {
             </td>
           </tr>
           <tr>
-            <td>Blood Pressure (mmHg):</td>
+            <td className='px-1 py-1'>Blood Pressure (mmHg):</td>
             <td>
               <input
                 type="number"
@@ -89,7 +89,7 @@ const PatientForm = () => {
             </td>
           </tr>
           <tr>
-            <td>Sugar (mg/dL):</td>
+            <td className='px-1 py-1'>Sugar (mg/dL):</td>
             <td>
               <input
                 type="number"
@@ -100,7 +100,7 @@ const PatientForm = () => {
             </td>
           </tr>
           <tr>
-            <td>Pulse (bpm):</td>
+            <td className='px-1 py-1'>Pulse (bpm):</td>
             <td>
               <input
                 type="number"
@@ -111,7 +111,7 @@ const PatientForm = () => {
             </td>
           </tr>
           <tr>
-            <td>Hb (g/dL):</td>
+            <td className='px-1 py-1'>Hb (g/dL):</td>
             <td>
               <input
                 type="number"
@@ -122,7 +122,7 @@ const PatientForm = () => {
             </td>
           </tr>
           <tr>
-            <td>Nausea:</td>
+            <td className='px-1 py-1'>Nausea:</td>
             <td>
               <select name="nausea" value={newVisit.nausea} onChange={handleInputChange}>
                 <option value="">Select</option>
@@ -132,7 +132,7 @@ const PatientForm = () => {
             </td>
           </tr>
           <tr>
-            <td>Vomiting:</td>
+            <td className='px-1 py-1'>Vomiting:</td>
             <td>
               <select name="vomiting" value={newVisit.vomiting} onChange={handleInputChange}>
                 <option value="">Select</option>
@@ -142,7 +142,7 @@ const PatientForm = () => {
             </td>
           </tr>
           <tr>
-            <td>Pregnancy:</td>
+            <td className='px-1 py-1'>Pregnancy:</td>
             <td>
               <select name="pregnancy" value={newVisit.pregnancy} onChange={handleInputChange}>
                 <option value="">Select</option>
@@ -152,7 +152,7 @@ const PatientForm = () => {
             </td>
           </tr>
           <tr>
-            <td>SR No:</td>
+            <td className='px-1 py-1'>SR No:</td>
             <td>
               <input
                 type="number"
