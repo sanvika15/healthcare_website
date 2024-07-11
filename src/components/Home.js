@@ -11,7 +11,7 @@ const HomePage = () => {
               "Expecting a baby? Get expert guidance and care from the comfort of your own home with our pregnancy consultation services. Our team of experienced doctors and medical specialists are here to support you every step of the way, from confirming your pregnancy to post-delivery care. Whether you're experiencing morning sickness, fatigue, or back pain, or simply have questions about your pregnancy, we're here to provide personalized advice and reassurance. Simply fill out our online form, and our team will get back to you to schedule a convenient video consultation at a time that suits you."
             </p>
             <div style={{ display: 'flex', justifyContent: 'space-between', marginTop: 30 }}>
-              <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRYVUMsFo4QWbJ5ElgbitAQlZcx0O87L0E4Ww&s" alt="Image 1" style={{ width: 100, height: 100, marginRight: 10 }} />
+              <img src="image1.jpg" alt="Image 1" style={{ width: 100, height: 100, marginRight: 10 }} />
               <img src="image2.jpg" alt="Image 2" style={{ width: 100, height: 100, marginRight: 10 }} />
               <img src="image3.jpg" alt="Image 3" style={{ width: 100, height: 100, marginRight: 10 }} />
               <img src="image4.jpg" alt="Image 4" style={{ width: 100, height: 100, marginRight: 10 }} />

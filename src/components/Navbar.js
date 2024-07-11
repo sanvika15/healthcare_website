@@ -1,8 +1,13 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import { useAuth0 } from "@auth0/auth0-react";
+
 
 const Navbar = ({ title, aboutText }) => {
+
+  const { loginWithRedirect , isAuthenticated, logout , user} = useAuth0();
+
   return (
 <nav className="navbar navbar-expand-lg" style={{
   backgroundImage: 'linear-gradient(to right, #8BC34A, #4CAF50)',
@@ -11,7 +16,7 @@ const Navbar = ({ title, aboutText }) => {
 }}>
 
 <div className="container-fluid">
-        <Link className="navbar-brand" to="/home" style={{ color: '#F7F7F7'}}>PregnancyPal</Link>
+        <Link className="navbar-brand" to="" style={{ color: '#F7F7F7'}}>PregnancyPal</Link>
         <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span className="navbar-toggler-icon"></span>
         </button>
@@ -24,19 +29,31 @@ const Navbar = ({ title, aboutText }) => {
               <Link className="nav-link " to="/form1" style={{ color: '#F7F7F7'}}>Pregnancy confirmation</Link>
             </li>
             <li className="nav-item">
-              <Link className="nav-link " to="/form2" style={{ color: '#F7F7F7'}}>Form 2</Link>
+              <Link className="nav-link " to="/form2" style={{ color: '#F7F7F7'}}>Basic Information</Link>
             </li>
             <li className="nav-item">
               <Link className="nav-link" to="/form3" style={{ color: '#F7F7F7'}}>Pregnancy Concerns</Link>
             </li>
           </ul>
-          <ul className="nav nav-pills" >
-              <li className="nav-item">
-                <Link className="nav-link active" to="/login" style={{ color: '#F7F7F7', backgroundColor: '#8BC34A' }}>
-                  Login
-                </Link>
+
+            {isAuthenticated && (
+              <li>
+                <p> {user.name} </p> 
               </li>
-            </ul>
+               )} 
+              { isAuthenticated ? (
+                  <li>
+                  <button type="button" className="btn btn-primary" onClick={() => logout({ logoutParams: { returnTo: window.location.origin } })}>
+                    Log Out
+                  </button>
+                  </li> 
+                  ):(
+                  <li className="nav-item">
+                  <button type="button" className="btn btn-primary" onClick={() => loginWithRedirect()}>Log In</button>
+                  </li>
+                  )
+              }
+          
         </div>
       </div>
     </nav>
