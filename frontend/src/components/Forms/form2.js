@@ -113,6 +113,7 @@ const PatientForm = () => {
   });
 
   return (
+    <>
     <div className="mx-3 my-3">
       <h2 className="text-xl font-bold">Patient Visit Form</h2>
       <Survey model={survey} />
@@ -138,7 +139,19 @@ const PatientForm = () => {
           </li>
         ))}
       </ul>
+
+      
     </div>
+    <footer style={{
+      backgroundColor: '#4CAF50',
+      color: '#ffffff',
+      textAlign: 'center',
+      padding: '.5rem 0',
+    }}>
+      <p>&copy; 2024 PregnancyPal. All rights reserved.</p>
+      <p>Contact us: info@pregnancypal.com | +123-456-7890</p>
+    </footer>
+    </>
   );
 };
 

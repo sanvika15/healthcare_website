@@ -16,6 +16,7 @@ function App() {
   return (
     <Router>
       <Navbar title="Healthcare" aboutText={aboutText}/>
+     
       <Routes>
         <Route exact path="/" element={<Home />} /> {/* Updated to use "/" for the home page */}
         <Route path="/login" element={<Login />} />

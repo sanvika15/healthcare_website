@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import 'survey-core/defaultV2.min.css';
 import { Model } from 'survey-core';
 import { Survey } from 'survey-react';
@@ -48,22 +48,21 @@ const surveyJson = {
 
 const PregnancyConfirmation = () => {
   const survey = new Model(surveyJson);
+  const [resultMessage, setResultMessage] = useState('');
+  const [resultColor, setResultColor] = useState('');
+  const [hasError, setHasError] = useState(false);
+  const [showResult, setShowResult] = useState(false);
 
   // Handle the survey completion
   survey.onComplete.add((result) => {
-    console.log("Survey results: ", result.data);
-    
     const { name, age, contact, missedPeriods, kitResult } = result.data;
 
-    let resultMessage;
-    let resultColor;
-
     if (kitResult === "positive") {
-      resultMessage = 'Congratulations! You are pregnant. Please schedule an ultrasound and begin antenatal care.';
-      resultColor = 'green';
+      setResultMessage('Congratulations! You are pregnant. Please schedule an ultrasound and begin antenatal care.');
+      setResultColor('green');
     } else {
-      resultMessage = 'Please wait a few days and rest. If symptoms persist, consult a doctor.';
-      resultColor = 'orange';
+      setResultMessage('Please wait a few days and rest. If symptoms persist, consult a doctor.');
+      setResultColor('orange');
     }
 
     // Handle the API submission
@@ -74,25 +73,48 @@ const PregnancyConfirmation = () => {
     })
       .then(response => response.json())
       .then(data => {
-        console.log(data);
-        resultMessage = data.message;
-        resultColor = 'green';
+        setResultMessage(data.message);
+        setResultColor('green');
+        setShowResult(true);
+        setTimeout(() => {
+          setShowResult(false);
+        }, 5000); // show the result for 5 seconds
       })
       .catch(error => {
-        console.error(error);
-        resultMessage = 'Error submitting form';
-        resultColor = 'red';
+        setHasError(true);
+        setResultMessage('Error submitting form');
+        setResultColor('red');
+        setShowResult(true);
+        setTimeout(() => {
+          setShowResult(false);
+        }, 5000); // show the result for 5 seconds
       });
-
-    // Display result message (you can use state here to show messages)
-    alert(resultMessage); // Simple alert for demonstration
   });
 
   return (
-    <div className="container mx-1 my-1 rounded-lg bg-white p-4 shadow-md">
-      <h2 className="text-2xl font-bold mb-4">Pregnancy Confirmation</h2>
+    <>
+    <div className="mx-3 my-3">
+    <h2 className="text-xl font-bold">Pregnancy Confirmation</h2>
       <Survey model={survey} />
-    </div>
+      {showResult && (
+        <div style={{ color: resultColor, fontSize: '24px', fontWeight: 'bold' }}>
+          {hasError ? 'Error submitting form' : resultMessage}
+        </div>
+      )}
+      
+      <div style={{ height: '200px' }} /> 
+      </div>
+
+    <footer style={{
+      backgroundColor: '#4CAF50',
+      color: '#ffffff',
+      textAlign: 'center',
+      padding: '.5rem 0',
+    }}>
+      <p>&copy; 2024 PregnancyPal. All rights reserved.</p>
+      <p>Contact us: info@pregnancypal.com | +123-456-7890</p>
+    </footer>
+    </>
   );
 };
 
