@@ -14,7 +14,8 @@
     "react-router-dom": "^6.24.0",
     "react-scripts": "5.0.1",
     "styled-components": "^5.3.10",
-    "survey-react-ui": "^1.11.4",
+    "survey-react": "^1.12.2",
+    "survey-react-ui": "^1.12.2",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
